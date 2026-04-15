@@ -8,7 +8,7 @@ export const userApi = api.injectEndpoints({
       { email: string; password: string }
     >({
       query: (userData) => ({
-        url: "/auth/login",
+        url: "/login",
         method: "POST",
         body: userData,
       }),
@@ -18,7 +18,7 @@ export const userApi = api.injectEndpoints({
       { email: string; password: string; name: string }
     >({
       query: (userData) => ({
-        url: "/auth/register",
+        url: "/register",
         method: "POST",
         body: userData,
       }),
