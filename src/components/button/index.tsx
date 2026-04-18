@@ -14,6 +14,16 @@ type Props = {
     | "default"
     | "danger"
     | undefined
+  variant?:
+    | "solid"
+    | "bordered"
+    | "light"
+    | "flat"
+    | "faded"
+    | "shadow"
+    | "ghost"
+    | undefined
+  onClick?: () => void
 }
 
 export const Button: React.FC<Props> = ({
@@ -23,16 +33,19 @@ export const Button: React.FC<Props> = ({
   type = "button",
   fullWidth,
   color,
+  variant = "light",
+  onClick,
 }) => {
   return (
     <NextBtn
       className={className}
       startContent={icon}
-      variant="light"
+      variant={variant}
       size="lg"
       type={type}
       fullWidth={fullWidth}
       color={color}
+      onClick={onClick}
     >
       {children}
     </NextBtn>

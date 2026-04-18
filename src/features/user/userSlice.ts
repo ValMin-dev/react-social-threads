@@ -42,7 +42,7 @@ const slice = createSlice({
       userApi.endpoints.current.matchFulfilled,
       (state, action) => {
         state.isAuthenticated = true
-        state.current = action.payload
+        state.current = action.payload.user
       },
     )
     builder.addMatcher(

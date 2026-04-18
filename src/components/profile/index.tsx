@@ -14,14 +14,20 @@ export const Profile = () => {
   const { name, email, avatarUrl, id } = currentUser
 
   return (
-    <Card className="py-4 w-[400px]">
+    <Card className="py-4 w-[300px]">
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
-        <Image
-          src={`${BASE_URL}/avatars/${avatarUrl}`}
-          width={300}
-          alt="Avatar"
-          className="rounded-xl object-cover w-24 h-24 mb-4"
-        />
+        {avatarUrl ? (
+          <Image
+            src={`${BASE_URL}/avatars/${avatarUrl}`}
+            width={300}
+            alt="Avatar"
+            className="rounded-xl object-cover w-24 h-24 mb-4"
+          />
+        ) : (
+          <div className="w-24 h-24 bg-gray-300 rounded-xl mb-4 flex items-center justify-center">
+            <span className="text-gray-500">No Avatar</span>
+          </div>
+        )}
       </CardHeader>
       <CardBody>
         <Link to={`/users/${id}`}>
