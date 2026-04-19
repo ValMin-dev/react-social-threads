@@ -14,11 +14,17 @@ export const User: React.FC<Props> = ({
   description = "",
   className = "",
 }) => {
+  const avatarSrc = avatarUrl
+    ? avatarUrl.startsWith("/")
+      ? `${BASE_URL}${avatarUrl}`
+      : `${BASE_URL}/avatars/${avatarUrl}`
+    : ""
+
   return (
     <NextUiUser
       name={name}
       avatarProps={{
-        src: `${BASE_URL}/avatars/${avatarUrl}`,
+        src: avatarSrc,
       }}
       description={description}
       className={className}

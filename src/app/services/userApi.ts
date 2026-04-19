@@ -36,6 +36,10 @@ export const userApi = api.injectEndpoints({
         url: `/users/${id}`,
         method: "GET",
       }),
+      transformResponse: (response: { user: User; isFollowing: boolean }) => ({
+        ...response.user,
+        isFollowing: response.isFollowing,
+      }),
     }),
     updateUser: builder.mutation<User, { userData: FormData; id: string }>({
       query: ({ userData, id }) => ({

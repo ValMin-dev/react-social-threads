@@ -9,6 +9,7 @@ type Input = {
   control: Control<any>
   required?: string | boolean
   endContent?: JSX.Element
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Input: React.FC<Input> = ({
@@ -19,6 +20,7 @@ export const Input: React.FC<Input> = ({
   control,
   required = "",
   endContent,
+  onChange,
 }) => {
   const {
     field,
@@ -35,7 +37,10 @@ export const Input: React.FC<Input> = ({
       name={field.name}
       value={field.value}
       isInvalid={invalid}
-      onChange={field.onChange}
+      onChange={(e) => {
+        field.onChange(e)
+        onChange?.(e)
+      }}
       onBlur={field.onBlur}
       errorMessage={errors[name]?.message as string | ""}
       placeholder={placeholder}

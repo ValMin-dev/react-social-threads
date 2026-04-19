@@ -12,13 +12,18 @@ export const Profile = () => {
     return null
   }
   const { name, email, avatarUrl, id } = currentUser
+  const avatarSrc = avatarUrl
+    ? avatarUrl.startsWith("/")
+      ? `${BASE_URL}${avatarUrl}`
+      : `${BASE_URL}/avatars/${avatarUrl}`
+    : ""
 
   return (
     <Card className="py-4 w-[300px]">
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
         {avatarUrl ? (
           <Image
-            src={`${BASE_URL}/avatars/${avatarUrl}`}
+            src={avatarSrc}
             width={300}
             alt="Avatar"
             className="rounded-xl object-cover w-24 h-24 mb-4"

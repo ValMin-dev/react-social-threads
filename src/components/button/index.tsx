@@ -6,6 +6,7 @@ type Props = {
   className?: string
   type?: "button" | "submit" | "reset"
   fullWidth?: boolean
+  isLoading?: boolean
   color?:
     | "primary"
     | "secondary"
@@ -34,6 +35,7 @@ export const Button: React.FC<Props> = ({
   fullWidth,
   color,
   variant = "light",
+  isLoading,
   onClick,
 }) => {
   return (
@@ -41,6 +43,7 @@ export const Button: React.FC<Props> = ({
       className={className}
       startContent={icon}
       variant={variant}
+      isLoading={isLoading}
       size="lg"
       type={type}
       fullWidth={fullWidth}

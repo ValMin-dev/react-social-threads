@@ -102,7 +102,7 @@ export const Card: React.FC<Props> = ({
   return (
     <NextUICard className="mb-5">
       <CardHeader className="w-full items-center justify-between bg-transparent">
-        <Link to={`/profile/${authorId}`}>
+        <Link to={`/users/${authorId}`}>
           <User
             name={name}
             avatarUrl={avatarUrl}
