@@ -1,3 +1,4 @@
+// Описание пользователя и связанных с ним данных.
 export type User = {
   id: string
   email: string
@@ -17,6 +18,7 @@ export type User = {
   isFollowing?: boolean
 }
 
+// Подписка одного пользователя на другого.
 export type Follows = {
   id: string
   follower: User
@@ -24,6 +26,7 @@ export type Follows = {
   following: User
   followingId: string
 }
+// Лайк, который пользователь поставил посту.
 export type Like = {
   id: string
   user: User
@@ -32,6 +35,7 @@ export type Like = {
   postId: string
 }
 
+// Пост пользователя с лайками и комментариями.
 export type Post = {
   id: string
   content: string
@@ -44,6 +48,7 @@ export type Post = {
   likedByUser?: boolean
 }
 
+// Комментарий к посту.
 export type Comment = {
   id: string
   content: string

@@ -1,3 +1,4 @@
+// Показывает текст ошибки, если он есть.
 export const ErrorMessage = ({ error }: { error: string | null }) => {
   return (
     error && (

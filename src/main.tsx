@@ -16,6 +16,7 @@ import { Followers } from "./pages/followers"
 import { Following } from "./pages/following"
 import { AuthGuard } from "./features/user/authGuard"
 
+// Здесь описаны все страницы и пути приложения.
 const router = createBrowserRouter([
   { path: "/auth", element: <Auth /> },
   {
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
   },
 ])
 
+// Здесь React подключает всё приложение к div#root в index.html.
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>

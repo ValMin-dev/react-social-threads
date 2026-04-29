@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Login } from "../../features/user/login"
 import { Register } from "../../features/user/register"
 
+// Страница входа и регистрации с двумя вкладками.
 export const Auth = () => {
   const [selected, setSelected] = useState("login")
   return (

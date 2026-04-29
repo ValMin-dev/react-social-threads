@@ -7,6 +7,8 @@ import {
 import { useForm, Controller } from "react-hook-form"
 import { ErrorMessage } from "../error-message"
 import { Button } from "../button"
+
+// Форма для создания нового поста.
 export const CreatePost = () => {
   const [createPost] = useCreatePostMutation()
   const [triggerAllPost] = useLazyGetAllPostsQuery()
@@ -18,6 +20,8 @@ export const CreatePost = () => {
     formState: { errors },
   } = useForm()
   const error = errors?.post?.message as string
+
+  // Создаёт пост и потом обновляет список постов.
   const onSubmit = handleSubmit(async (data) => {
     try {
       await createPost({ content: data.post }).unwrap()

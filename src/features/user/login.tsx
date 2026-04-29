@@ -9,14 +9,17 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { hasErrorField } from "../../utils/has-error-field"
 
+// Данные, которые приходят от родительской вкладки auth.
 type Props = {
   setSelected: (value: string) => void
 }
+// Поля формы входа.
 type Login = {
   email: string
   password: string
 }
 
+// Форма входа пользователя.
 export const Login = ({ setSelected }: Props) => {
   const {
     handleSubmit,
@@ -35,6 +38,7 @@ export const Login = ({ setSelected }: Props) => {
   const navigate = useNavigate()
   const [error, setError] = useState<string | null>(null)
   const [triggerCurrentQuery] = useLazyCurrentQuery()
+  // Пытается войти, загружает текущего пользователя и ведёт на главную страницу.
   const onSubmit = async (data: Login) => {
     try {
       await login(data).unwrap()
@@ -48,6 +52,7 @@ export const Login = ({ setSelected }: Props) => {
   }
 
   return (
+    // Простая форма входа с email и паролем.
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
       <Input
         control={control}

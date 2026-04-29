@@ -13,12 +13,15 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { Button } from "../button"
 import { CiLogout } from "react-icons/ci"
+
+// Верхняя панель: тема, название проекта и выход из аккаунта.
 export const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext)
   const isAuthenticated = useSelector(selectIsAuthenticated)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  // Выход очищает данные пользователя и уводит на страницу входа.
   const handleLogOut = () => {
     dispatch(logout())
     localStorage.removeItem("token")

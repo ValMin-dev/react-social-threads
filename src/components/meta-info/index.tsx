@@ -1,5 +1,6 @@
 import { IconType } from "react-icons"
 
+// Маленький блок: иконка плюс число рядом.
 type Props = {
   count: number
   Icon: IconType

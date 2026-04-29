@@ -10,11 +10,13 @@ import {
 import { useEffect } from "react"
 import { Profile } from "../profile"
 
+// Главный layout для приватной части приложения.
 export const Layout = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated)
   const user = useSelector(selectCurrentUser)
   const navigate = useNavigate()
 
+  // Если пользователь не вошёл, отправляем его на страницу авторизации.
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/auth")

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { Card, CardBody } from "@nextui-org/react"
 import { User } from "../../components/user"
 
+// Страница со списком людей, на которых подписан текущий пользователь.
 export const Following = () => {
   const currentUser = useSelector(selectCurrentUser)
 

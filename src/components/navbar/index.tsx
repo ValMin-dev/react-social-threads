@@ -2,6 +2,8 @@ import { NavButton } from "../navbutton"
 import { BsPostcard } from "react-icons/bs"
 import { FiUsers } from "react-icons/fi"
 import { FaUsers } from "react-icons/fa"
+
+// Боковое меню с главными разделами приложения.
 export const NavBar = () => {
   return (
     <nav>

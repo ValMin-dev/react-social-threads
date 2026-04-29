@@ -1,3 +1,4 @@
+// Обёртка, которая держит контент по центру и раскладывает его по flex.
 type Props = {
   children: React.ReactElement | React.ReactElement[]
 }

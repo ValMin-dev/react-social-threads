@@ -7,6 +7,7 @@ import { ErrorMessage } from "../error-message"
 import { IoMdCreate } from "react-icons/io"
 import { useCreateCommentMutation } from "../../app/services/commentsApi"
 
+// Форма для добавления комментария к посту.
 export const CreateComment = () => {
   const { id } = useParams<{ id: string }>()
   const [getPostById] = useLazyGetPostByIdQuery()
@@ -20,6 +21,7 @@ export const CreateComment = () => {
   } = useForm()
   const error = errors?.comment?.message as string
 
+  // Создаёт комментарий и потом заново загружает пост.
   const onSubmit = handleSubmit(async (data) => {
     try {
       if (id) {

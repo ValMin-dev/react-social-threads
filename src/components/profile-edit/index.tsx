@@ -18,12 +18,14 @@ import { ErrorMessage } from "../error-message"
 import { Button } from "../button"
 import { hasErrorField } from "../../utils/has-error-field"
 
+// Что нужно модалке редактирования профиля.
 type Props = {
   isOpen: boolean
   onClose: () => void
   user?: User
 }
 
+// Модальное окно для изменения профиля пользователя.
 export const ProfileEdit: React.FC<Props> = ({ isOpen, onClose, user }) => {
   const { theme } = useContext(ThemeContext)
   const [updateUser, { isLoading }] = useUpdateUserMutation()
@@ -48,12 +50,14 @@ export const ProfileEdit: React.FC<Props> = ({ isOpen, onClose, user }) => {
     return null
   }
 
+  // Запоминает выбранный файл аватара.
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files != null) {
       setSelectedFile(e.target.files[0])
     }
   }
 
+  // Собирает FormData и отправляет обновлённые данные профиля.
   const onSubmit = async (data: User) => {
     if (id) {
       try {

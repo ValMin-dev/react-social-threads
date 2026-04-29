@@ -1,3 +1,4 @@
+// Небольшой блок с числом и подписью.
 type Props = {
   title: string
   count: number

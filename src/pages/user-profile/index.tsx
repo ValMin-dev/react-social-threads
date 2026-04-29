@@ -25,6 +25,7 @@ import { formatToClientDate } from "../../utils/formt-to-client-date"
 import { CountInfo } from "../../components/count-info"
 import { ProfileEdit } from "../../components/profile-edit"
 
+// Страница профиля пользователя.
 export const UserProfile = () => {
   const { id } = useParams<{ id: string }>()
   const currentUserId = useSelector(selectCurrentUser)?.id
@@ -43,8 +44,10 @@ export const UserProfile = () => {
       : `${BASE_URL}/avatars/${data.avatarUrl}`
     : ""
 
+  // Если данных ещё нет, просто ничего не показываем.
   if (!data) return null
   if (isLoading) {
+    // Пока профиль грузится, показываем спиннер.
     return (
       <div className="flex justify-center py-10">
         <Spinner />
@@ -52,12 +55,14 @@ export const UserProfile = () => {
     )
   }
   if (isError) {
+    // Показываем ошибку, если пользователя не удалось загрузить.
     const apiError = error as { status?: number }
     if (apiError?.status === 404) {
       return <h2>Пользователя не существует</h2>
     }
     return <ErrorMessage error="Не удалось загрузить пользователя" />
   }
+  // Переключает состояние подписки и потом заново загружает свежие данные.
   const handleFollowToggle = () => async () => {
     try {
       if (data.isFollowing) {
@@ -71,6 +76,7 @@ export const UserProfile = () => {
       console.error("Failed to toggle follow status:", err)
     }
   }
+  // После закрытия модалки заново подгружает данные профиля.
   const handleClose = async () => {
     try {
       if (id) {

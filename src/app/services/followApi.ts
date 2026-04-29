@@ -1,7 +1,9 @@
 import { api } from "./api"
 
+// Запросы для подписки и отписки от пользователей.
 export const followApi = api.injectEndpoints({
   endpoints: (builder) => ({
+    // Подписывает текущего пользователя на другого пользователя.
     followUser: builder.mutation<{ message: string }, string>({
       query: (userId) => ({
         url: "/follows",
@@ -9,6 +11,7 @@ export const followApi = api.injectEndpoints({
         body: { followingId: userId },
       }),
     }),
+    // Отписывает текущего пользователя от другого пользователя.
     unfollowUser: builder.mutation<{ message: string }, string>({
       query: (userId) => ({
         url: `/follows/${userId}`,
@@ -18,4 +21,5 @@ export const followApi = api.injectEndpoints({
   }),
 })
 
+// Хуки для кнопок подписки и отписки.
 export const { useFollowUserMutation, useUnfollowUserMutation } = followApi

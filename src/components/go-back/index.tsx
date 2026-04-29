@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import { FaRegArrowAltCircleLeft } from "react-icons/fa"
 
+// Простая кнопка "назад".
 export const GoBack = () => {
   const navigate = useNavigate()
+  // Возвращает пользователя на предыдущую страницу.
   const handleGoBack = () => {
     navigate(-1)
   }

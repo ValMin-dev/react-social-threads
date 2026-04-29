@@ -5,6 +5,7 @@ import { BASE_URL } from "../../constants"
 import { Link } from "react-router-dom"
 import { MdAlternateEmail } from "react-icons/md"
 
+// Карточка текущего пользователя в правой колонке.
 export const Profile = () => {
   const currentUser = useSelector(selectCurrentUser)
 

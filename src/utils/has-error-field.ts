@@ -1,3 +1,4 @@
+// Проверяет, есть ли у ошибки поле error в привычном для нас формате.
 export function hasErrorField(
   err: unknown,
 ): err is { data: { error: string } } {

@@ -1,6 +1,7 @@
 import { Input as NextInput } from "@nextui-org/react"
 import { Control, useController } from "react-hook-form"
 
+// Какие данные нужны нашему полю ввода.
 type Input = {
   name: string
   placeholder?: string
@@ -12,6 +13,7 @@ type Input = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
+// Это обёртка над NextUI Input, которая дружит с react-hook-form.
 export const Input: React.FC<Input> = ({
   name,
   placeholder,

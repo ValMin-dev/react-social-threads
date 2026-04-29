@@ -2,6 +2,7 @@ import { useGetAllPostsQuery } from "../../app/services/postsApi"
 import { Card } from "../../components/card"
 import { CreatePost } from "../../components/create-post"
 
+// Главная страница со списком постов.
 export const Posts = () => {
   const { data } = useGetAllPostsQuery()
   return (

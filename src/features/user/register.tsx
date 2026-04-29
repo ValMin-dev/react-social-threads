@@ -10,15 +10,18 @@ import { useState } from "react"
 import { hasErrorField } from "../../utils/has-error-field"
 import { ErrorMessage } from "../../components/error-message"
 
+// Данные, которые приходят от родительской вкладки auth.
 type Props = {
   setSelected: (value: string) => void
 }
+// Поля формы регистрации.
 type Register = {
   email: string
   password: string
   name: string
 }
 
+// Форма регистрации нового пользователя.
 export const Register: React.FC<Props> = ({ setSelected }) => {
   const {
     handleSubmit,
@@ -38,6 +41,7 @@ export const Register: React.FC<Props> = ({ setSelected }) => {
   const navigate = useNavigate()
   const [error, setError] = useState<string | null>(null)
   const [triggerCurrentQuery] = useLazyCurrentQuery()
+  // Отправляет данные регистрации и после успеха переключает вкладку на логин.
   const onSubmit = async (data: Register) => {
     try {
       await register(data).unwrap()
@@ -50,6 +54,7 @@ export const Register: React.FC<Props> = ({ setSelected }) => {
   }
 
   return (
+    // Простая форма регистрации с именем, почтой и паролем.
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
       <Input
         control={control}

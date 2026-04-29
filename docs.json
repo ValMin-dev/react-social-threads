@@ -1,0 +1,129 @@
+{
+  "project": {
+    "name": "react-social-threads-front",
+    "summary": "Фронтенд социальной сети на React + Vite + Redux Toolkit + RTK Query + React Router + NextUI + Tailwind. Приложение покрывает авторизацию, просмотр и создание постов, комментарии, лайки, подписки и редактирование профиля.",
+    "architecture": {
+      "entry": "src/main.tsx",
+      "ui": "src/components",
+      "pages": "src/pages",
+      "features": "src/features",
+      "state": "src/app и src/features/user",
+      "api": "src/app/services",
+      "utils": "src/utils"
+    }
+  },
+  "structure": {
+    "root": {
+      "index.html": "HTML-шаблон приложения и корневой div#root для монтирования React.",
+      "package.json": "Описание npm-проекта, скриптов, runtime-зависимостей и dev-зависимостей.",
+      "package-lock.json": "Зафиксированные версии зависимостей npm для воспроизводимой установки.",
+      "postcss.config.js": "Конфигурация PostCSS с Tailwind CSS и Autoprefixer.",
+      "tailwind.config.js": "Конфигурация Tailwind и подключение NextUI-плагина.",
+      "tsconfig.json": "Основная конфигурация TypeScript для фронтенд-кода.",
+      "tsconfig.node.json": "Отдельная TypeScript-конфигурация для Vite-конфига.",
+      "vite.config.ts": "Конфигурация Vite и Vitest: dev-сервер, build и test-настройки."
+    },
+    "src": {
+      "main.tsx": "Точка входа приложения: создаёт router, подключает Redux Provider, NextUIProvider, ThemeProvider и AuthGuard.",
+      "index.css": "Глобальные стили, импорт Tailwind-слоёв и базовая типографика.",
+      "constants.ts": "Общие константы, сейчас содержит BASE_URL для API и ассетов.",
+      "setupTests.ts": "Инициализация test-окружения Vitest и jest-dom матчеров.",
+      "vite-env.d.ts": "Типы окружения Vite для TypeScript."
+    }
+  },
+  "files": {
+    "src/app/App.tsx": "Тестовый/временный компонент приложения с кнопкой NextUI; в текущем роутинге не используется.",
+    "src/app/hooks.ts": "Типизированные хуки useAppDispatch и useAppSelector для Redux.",
+    "src/app/store.ts": "Сборка Redux store, подключение RTK Query reducer и listener middleware.",
+    "src/app/types.ts": "Общие типы доменной модели: User, Post, Comment, Like, Follows.",
+    "src/app/services/api.ts": "Базовый RTK Query API-клиент с BASE_URL, retry и Authorization header из store/localStorage.",
+    "src/app/services/commentsApi.ts": "RTK Query endpoints для создания, редактирования и удаления комментариев.",
+    "src/app/services/followApi.ts": "RTK Query endpoints для подписки и отписки от пользователей.",
+    "src/app/services/likesApi.ts": "RTK Query endpoints для лайка и снятия лайка с поста.",
+    "src/app/services/postsApi.ts": "RTK Query endpoints для CRUD-операций над постами и преобразования ответа бэкенда.",
+    "src/app/services/userApi.ts": "RTK Query endpoints для логина, регистрации, загрузки текущего пользователя и профиля по id.",
+    "src/components/button/index.tsx": "Обёртка над NextUI Button с едиными пропсами для иконок, loading-состояния и вариантов оформления.",
+    "src/components/card/index.tsx": "Главная карточка контента: рендер постов и комментариев, лайк/анлайк, удаление, навигация и мета-информация.",
+    "src/components/container/index.tsx": "Широкий flex-контейнер для основного трёхколоночного layout.",
+    "src/components/count-info/index.tsx": "Мини-блок для показа счётчиков, например подписчиков и подписок.",
+    "src/components/create-comment/index.tsx": "Форма создания комментария с react-hook-form и обновлением данных поста после отправки.",
+    "src/components/create-post/index.tsx": "Форма создания поста с react-hook-form и повторной загрузкой списка постов.",
+    "src/components/error-message/index.tsx": "Унифицированный вывод текстовых ошибок в интерфейсе.",
+    "src/components/go-back/index.tsx": "Кнопка возврата на предыдущую страницу через navigate(-1).",
+    "src/components/header/index.tsx": "Верхняя навигационная панель: бренд, переключение темы и logout.",
+    "src/components/input/index.tsx": "Обёртка над NextUI Input с интеграцией в react-hook-form и показом ошибок валидации.",
+    "src/components/layout/index.tsx": "Основной layout приватной части: header, левое меню, центральный outlet и правый профильный блок.",
+    "src/components/meta-info/index.tsx": "Компонент для иконки с числовым счётчиком, например лайков и комментариев.",
+    "src/components/navbar/index.tsx": "Боковое меню с переходами к постам, подпискам и подписчикам.",
+    "src/components/navbutton/index.tsx": "Кнопка меню, сочетающая кнопку и react-router Link.",
+    "src/components/profile/index.tsx": "Карточка текущего пользователя в сайдбаре с аватаром, именем и email.",
+    "src/components/profile-edit/index.tsx": "Модальное окно редактирования профиля, включая форму, загрузку аватара и отправку FormData.",
+    "src/components/profile-info/index.tsx": "Строка профиля с заголовком поля и значением, рендерится только при наличии данных.",
+    "src/components/theme-provider/index.tsx": "Контекст темы light/dark, переключение темы и обёртка приложения классами темы.",
+    "src/components/typography/index.tsx": "Простая текстовая обёртка с размером текста через Tailwind-класс.",
+    "src/components/user/index.tsx": "Обёртка над NextUI User, собирает display-блок пользователя и нормализует URL аватара.",
+    "src/features/user/authGuard.tsx": "Блокирует рендер дочернего дерева, пока загружается current user.",
+    "src/features/user/login.tsx": "Форма входа: отправка логина, подгрузка current user и переход на главную страницу.",
+    "src/features/user/register.tsx": "Форма регистрации: отправка данных регистрации и возврат на вкладку логина после успеха.",
+    "src/features/user/userSlice.ts": "Redux slice пользователя: token, current user, профиль по id и флаг аутентификации.",
+    "src/middleware/auth.ts": "Redux listener middleware, который сохраняет JWT token в localStorage после успешного логина.",
+    "src/pages/auth/index.tsx": "Страница авторизации с табами Login/Register.",
+    "src/pages/current-post/index.tsx": "Страница одного поста: загрузка по id, показ комментариев и форма нового комментария.",
+    "src/pages/followers/index.tsx": "Страница списка подписчиков текущего пользователя.",
+    "src/pages/following/index.tsx": "Страница списка подписок текущего пользователя.",
+    "src/pages/posts/index.tsx": "Главная лента постов с формой создания нового поста и списком карточек.",
+    "src/pages/user-profile/index.tsx": "Страница профиля пользователя: загрузка данных, follow/unfollow, просмотр полей профиля и редактирование своего профиля.",
+    "src/utils/formt-to-client-date.ts": "Утилита форматирования даты в локальный формат браузера.",
+    "src/utils/has-error-field.ts": "Type guard для ошибок API с формой { data: { error: string } }."
+  },
+  "packages": {
+    "scripts": {
+      "dev": "Запускает Vite dev server.",
+      "start": "Альтернативный алиас для запуска Vite dev server.",
+      "build": "Сначала запускает TypeScript-проверку, затем production-сборку Vite.",
+      "preview": "Поднимает локальный сервер для просмотра production-сборки.",
+      "test": "Запускает тесты через Vitest.",
+      "format": "Форматирует проект через Prettier.",
+      "lint": "Проверяет код через ESLint.",
+      "type-check": "Запускает TypeScript без эмита файлов."
+    },
+    "dependencies": {
+      "@nextui-org/react": "UI-библиотека компонентов, на ней построены формы, navbar, modal, card, spinner и другие элементы интерфейса.",
+      "@reduxjs/toolkit": "Состояние приложения через Redux Toolkit, включая createSlice, configureStore и RTK Query.",
+      "framer-motion": "Анимационная зависимость, используется NextUI внутри компонентов и доступна для собственных анимаций.",
+      "react": "Базовая библиотека для построения UI-компонентов.",
+      "react-dom": "Пакет для монтирования React-приложения в DOM.",
+      "react-hook-form": "Управление формами, валидацией и контролируемыми полями.",
+      "react-icons": "Набор SVG-иконок для кнопок, меню и мета-информации.",
+      "react-redux": "Связка React и Redux: Provider, useSelector, useDispatch.",
+      "react-router-dom": "Маршрутизация SPA: роуты, Link, Outlet, navigate, useParams."
+    },
+    "devDependencies": {
+      "@testing-library/dom": "Набор утилит для тестирования DOM-элементов.",
+      "@testing-library/jest-dom": "Дополнительные матчеры для удобных DOM-проверок в тестах.",
+      "@testing-library/react": "Инструменты рендера и тестирования React-компонентов.",
+      "@testing-library/user-event": "Эмуляция пользовательских действий в тестах.",
+      "@types/react": "TypeScript-типы для React.",
+      "@types/react-dom": "TypeScript-типы для ReactDOM.",
+      "@types/testing-library__jest-dom": "TypeScript-типы для jest-dom.",
+      "@vitejs/plugin-react": "Vite-плагин для поддержки React и JSX/TSX.",
+      "autoprefixer": "PostCSS-плагин для автоматической расстановки CSS-вендорных префиксов.",
+      "eslint": "Статический анализатор кода.",
+      "eslint-config-react-app": "Базовый набор ESLint-правил для React-проектов.",
+      "eslint-plugin-prettier": "Интеграция Prettier с ESLint.",
+      "jsdom": "DOM-окружение для запуска браузерных тестов в Node.",
+      "postcss": "Процессор CSS, через который подключён Tailwind и Autoprefixer.",
+      "prettier": "Автоматическое форматирование кода.",
+      "prettier-config-nick": "Готовый набор правил форматирования Prettier.",
+      "tailwindcss": "Utility-first CSS-фреймворк для стилизации интерфейса.",
+      "typescript": "Компилятор и типизация TypeScript.",
+      "vite": "Сборщик и dev server проекта.",
+      "vitest": "Тестовый раннер, интегрированный с Vite."
+    }
+  },
+  "notes": [
+    "В проекте видны следы временного или неиспользуемого кода: например src/app/App.tsx не участвует в роутинге.",
+    "Часть текстовых строк в интерфейсе сохранена в битой кодировке и может потребовать отдельной правки UTF-8.",
+    "Документ описывает текущее состояние файлов, найденных в рабочем дереве на момент генерации."
+  ]
+}

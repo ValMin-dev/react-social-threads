@@ -28,6 +28,8 @@ import { Typography } from "../typography"
 import { MetaInfo } from "../meta-info"
 import { FaRegComment } from "react-icons/fa"
 import { ErrorMessage } from "../error-message"
+
+// Какие данные нужны карточке поста или комментария.
 type Props = {
   avatarUrl: string
   name: string
@@ -42,6 +44,7 @@ type Props = {
   likedByUser?: boolean
 }
 
+// Карточка умеет показывать пост, комментарий и пост на отдельной странице.
 export const Card: React.FC<Props> = ({
   id = "",
   name = "",
@@ -67,6 +70,7 @@ export const Card: React.FC<Props> = ({
   const currentUser = useSelector(selectCurrentUser)
   const refetchPosts = async () => {}
 
+  // Ставит или убирает лайк, а потом подгружает свежие данные.
   const handleClick = async () => {
     try {
       likedByUser ? await unlikePost(id).unwrap() : await likePost(id).unwrap()
@@ -82,6 +86,7 @@ export const Card: React.FC<Props> = ({
     }
   }
 
+  // Удаляет пост или комментарий и обновляет экран.
   const handleDelete = async () => {
     try {
       if (cardFor === "post") {

@@ -6,6 +6,7 @@ import { ErrorMessage } from "../../components/error-message"
 import { GoBack } from "../../components/go-back"
 import { CreateComment } from "../../components/create-comment"
 
+// Страница одного поста с комментариями.
 export const CurrentPost = () => {
   const params = useParams<{ id: string }>()
   const { data, isLoading, isError, error } = useGetPostByIdQuery(
@@ -16,6 +17,7 @@ export const CurrentPost = () => {
   )
 
   if (isLoading) {
+    // Пока пост загружается, показываем спиннер.
     return (
       <div className="flex justify-center py-10">
         <Spinner />
@@ -24,6 +26,7 @@ export const CurrentPost = () => {
   }
 
   if (isError) {
+    // Показываем понятное сообщение, если пост не найден или сервер ответил ошибкой.
     const apiError = error as { status?: number }
     if (apiError?.status === 404) {
       return <h2>Поста не существует</h2>
@@ -64,6 +67,7 @@ export const CurrentPost = () => {
         <CreateComment />
       </div>
       <div className="mt-10">
+        {/* Здесь рендерятся все комментарии к посту. */}
         {comments.length > 0 ? (
           comments.map((comment) => (
             <Card

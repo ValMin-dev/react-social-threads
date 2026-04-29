@@ -1,3 +1,4 @@
+// Простая обёртка для текста с разным размером.
 type Props = {
   children: string
   size?: string

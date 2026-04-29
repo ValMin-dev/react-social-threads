@@ -1,5 +1,6 @@
 import { Button as NextBtn } from "@nextui-org/react"
 
+// Какие данные умеет принимать наша кнопка.
 type Props = {
   children: React.ReactNode
   icon?: JSX.Element
@@ -27,6 +28,7 @@ type Props = {
   onClick?: () => void
 }
 
+// Это наша общая кнопка-обёртка над NextUI Button.
 export const Button: React.FC<Props> = ({
   children,
   icon,
